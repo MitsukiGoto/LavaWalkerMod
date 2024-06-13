@@ -25,15 +25,18 @@ import com.github.mikn.lavawalker.LavaWalker;
 import com.github.mikn.lavawalker.enchantment.LavaWalkerEnchantment;
 
 import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class EnchantmentInit {
-    public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister.create(Registries.ENCHANTMENT,
-            LavaWalker.MODID);
-    public static final DeferredHolder<Enchantment, LavaWalkerEnchantment> LAVA_WALKER = ENCHANTMENTS.register(
-            "lava_walker",
-            () -> new LavaWalkerEnchantment(Enchantment.Rarity.RARE, EquipmentSlot.FEET));
+        public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister.create(Registries.ENCHANTMENT,
+                        LavaWalker.MODID);
+        public static final DeferredHolder<Enchantment, LavaWalkerEnchantment> LAVA_WALKER = ENCHANTMENTS.register(
+                        "lava_walker",
+                        () -> new LavaWalkerEnchantment(Enchantment.definition(ItemTags.FOOT_ARMOR_ENCHANTABLE, 2, 2,
+                                        Enchantment.dynamicCost(10, 10), Enchantment.dynamicCost(25, 10), 4,
+                                        EquipmentSlot.FEET)));
 }

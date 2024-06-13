@@ -21,7 +21,7 @@
 
 package com.github.mikn.lavawalker.config;
 
-import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class LavaWalkerConfig {
@@ -47,7 +47,7 @@ public class LavaWalkerConfig {
     public static final ModConfigSpec.ConfigValue<Boolean> exclusiveWithFrostWalker;
     public static final ModConfigSpec.ConfigValue<Boolean> isTreasure;
     public static final ModConfigSpec.EnumValue<MeltSpeedEnum> meltSpeed;
-    public static final ModConfigSpec.EnumValue<Enchantment.Rarity> rarity;
+    public static final ModConfigSpec.EnumValue<Rarity> rarity;
 
     static {
         BUILDER.push("Config for LavaWalker Enchantment Mod");
@@ -56,7 +56,7 @@ public class LavaWalkerConfig {
         isTreasure = BUILDER.comment("Lavawalker is a treasure enchantment").define("isTreasure", true);
         max_enchantment_level = BUILDER.comment("Maximum level of Lavawalker").define("max_enchantment_level", 2);
         meltSpeed = BUILDER.comment("Obsidian melting velocity").defineEnum("meltSpeed", MeltSpeedEnum.NORMAL);
-        rarity = BUILDER.comment("Frequency of appearance of Lavawalker").defineEnum("rarity", Enchantment.Rarity.RARE);
+        rarity = BUILDER.comment("Frequency of appearance of Lavawalker").defineEnum("rarity", Rarity.RARE);
         BUILDER.pop();
         SPEC = BUILDER.build();
     }
