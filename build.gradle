@@ -10,7 +10,7 @@ plugins {
 
 version = project.mod_version
 group = 'com.mikn.lava_walker'
-archivesBaseName = 'neo-forge-lava_walker'
+archivesBaseName = project.mod_name
 
 repositories {
     mavenLocal()
@@ -98,7 +98,7 @@ curseforge {
             addGameVersion "1.20.6"
             addGameVersion "NeoForge"
             mainArtifact(jar.archivePath) {
-                displayName = "${project.archivesBaseName}_${project.version}"
+                displayName = "${project.archivesBaseName} ${project.version}"
             }
             afterEvaluate {
                 uploadTask.dependsOn("build")
