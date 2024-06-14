@@ -47,6 +47,11 @@ public class LavaWalkerEnchantment extends Enchantment {
         return LavaWalkerConfig.max_enchantment_level.get();
     }
 
+    @Override
+    public int getWeight() {
+        return LavaWalkerConfig.rarity.get().getInt();
+    }
+
     public static void onEntityMoved(LivingEntity livingEntity, Level level, BlockPos blockPos, int enchantmentLevel) {
         if (!livingEntity.onGround()) {
             return;
@@ -72,8 +77,8 @@ public class LavaWalkerEnchantment extends Enchantment {
         }
     }
 
-    public boolean checkCompatibility(Enchantment p_45024_) {
-        return super.checkCompatibility(p_45024_) && p_45024_ != Enchantments.DEPTH_STRIDER
-                && LavaWalkerConfig.exclusiveWithFrostWalker.get() ? p_45024_ != Enchantments.FROST_WALKER : true;
+    public boolean checkCompatibility(Enchantment pEnchantment) {
+        return super.checkCompatibility(pEnchantment) && pEnchantment != Enchantments.DEPTH_STRIDER
+                && LavaWalkerConfig.exclusiveWithFrostWalker.get() ? pEnchantment != Enchantments.FROST_WALKER : true;
     }
 }

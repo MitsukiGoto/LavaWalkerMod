@@ -21,7 +21,6 @@
 
 package com.github.mikn.lavawalker.config;
 
-import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class LavaWalkerConfig {
@@ -40,6 +39,20 @@ public class LavaWalkerConfig {
         }
     }
 
+    public enum RarityEnum {
+        EPIC(1), RARE(2), UNCOMMON(5), COMMON(10);
+
+        private final int value;
+
+        RarityEnum(final int value) {
+            this.value = value;
+        }
+
+        public int getInt() {
+            return this.value;
+        }
+    }
+
     public static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
     public static final ModConfigSpec SPEC;
 
@@ -47,7 +60,7 @@ public class LavaWalkerConfig {
     public static final ModConfigSpec.ConfigValue<Boolean> exclusiveWithFrostWalker;
     public static final ModConfigSpec.ConfigValue<Boolean> isTreasure;
     public static final ModConfigSpec.EnumValue<MeltSpeedEnum> meltSpeed;
-    public static final ModConfigSpec.EnumValue<Rarity> rarity;
+    public static final ModConfigSpec.EnumValue<RarityEnum> rarity;
 
     static {
         BUILDER.push("Config for LavaWalker Enchantment Mod");
@@ -56,7 +69,7 @@ public class LavaWalkerConfig {
         isTreasure = BUILDER.comment("Lavawalker is a treasure enchantment").define("isTreasure", true);
         max_enchantment_level = BUILDER.comment("Maximum level of Lavawalker").define("max_enchantment_level", 2);
         meltSpeed = BUILDER.comment("Obsidian melting velocity").defineEnum("meltSpeed", MeltSpeedEnum.NORMAL);
-        rarity = BUILDER.comment("Frequency of appearance of Lavawalker").defineEnum("rarity", Rarity.RARE);
+        rarity = BUILDER.comment("Frequency of appearance of Lavawalker").defineEnum("rarity", RarityEnum.RARE);
         BUILDER.pop();
         SPEC = BUILDER.build();
     }
