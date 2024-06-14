@@ -66,7 +66,7 @@ tasks.withType(ProcessResources).configureEach {
     ]
     inputs.properties replaceProperties
 
-    filesMatching(['META-INF/mods.toml']) {
+    filesMatching(['META-INF/neoforge.mods.toml']) {
         expand replaceProperties + [project: project]
     }
 }
@@ -94,8 +94,8 @@ curseforge {
         project {
             id = project.curseforge_project_id
             releaseType = "release"
-            addGameVersion "1.20.4"
-            addGameVersion "Java 17"
+            addGameVersion "1.20.5"
+            addGameVersion "1.20.6"
             addGameVersion "NeoForge"
             mainArtifact(jar.archivePath) {
                 displayName = "${project.archivesBaseName}_${project.version}"
@@ -107,7 +107,7 @@ curseforge {
     }
     options {
         forgeGradleIntegration = false
-        javaVersionAutoDetect = false
+        javaVersionAutoDetect = true
     }
 }
 
@@ -118,7 +118,7 @@ modrinth {
     	versionNumber = project.version
     	versionName = project.archivesBaseName
     	uploadFile = jar
-    	gameVersions = ['1.20','1.20.4']
+    	gameVersions = ["1.20.5", "1.20.6"]
     	dependencies {
     	}
     }
