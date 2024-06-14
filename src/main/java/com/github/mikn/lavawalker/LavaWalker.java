@@ -21,6 +21,8 @@
 
 package com.github.mikn.lavawalker;
 
+import java.util.Optional;
+
 import javax.annotation.Nonnull;
 
 import org.apache.logging.log4j.LogManager;
@@ -32,7 +34,8 @@ import com.github.mikn.lavawalker.init.EnchantmentInit;
 import com.github.mikn.lavawalker.init.ItemInit;
 
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 
@@ -43,8 +46,12 @@ public class LavaWalker {
     public static final Logger LOGGER = LogManager.getLogger("LavaWalker/Main");
 
     public LavaWalker(@Nonnull IEventBus modEventBus) {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON,
-                LavaWalkerConfig.SPEC, "lava_walker-common.toml");
+        Optional<? extends ModContainer> optional = ModList.get().getModContainerById(MODID);
+        optional.ifPresentOrElse(container -> {
+            container.registerConfig(ModConfig.Type.COMMON, LavaWalkerConfig.SPEC, "lava_walker-common.toml");
+        }, () -> {
+            LOGGER.error("Could not fetch ModContainer.");
+        });
         BlockInit.BLOCKS.register(modEventBus);
         ItemInit.ITEMS.register(modEventBus);
         EnchantmentInit.ENCHANTMENTS.register(modEventBus);
