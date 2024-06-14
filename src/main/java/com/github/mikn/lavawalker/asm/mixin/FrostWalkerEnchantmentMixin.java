@@ -38,8 +38,8 @@ public class FrostWalkerEnchantmentMixin extends Enchantment {
     }
 
     @Inject(method = "checkCompatibility(Lnet/minecraft/world/item/enchantment/Enchantment;)Z", at = @At("RETURN"), cancellable = true)
-    private void inject(Enchantment p_77326_1_, CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(super.checkCompatibility(p_77326_1_) && p_77326_1_ != Enchantments.DEPTH_STRIDER
-                && p_77326_1_ != EnchantmentInit.LAVA_WALKER.get());
+    private void inject(Enchantment pEnchantment, CallbackInfoReturnable<Boolean> cir) {
+        cir.setReturnValue(super.checkCompatibility(pEnchantment) && pEnchantment != Enchantments.DEPTH_STRIDER
+                && pEnchantment != EnchantmentInit.LAVA_WALKER.get());
     }
 }
