@@ -3,18 +3,18 @@ import com.matthewprenger.cursegradle.CurseProject
 import com.matthewprenger.cursegradle.Options
 
 plugins {
-	id("fabric-loom") version "1.5-SNAPSHOT"
+	id("fabric-loom") version "1.6-SNAPSHOT"
 	id("com.matthewprenger.cursegradle") version "1.4.0"
 	id("com.modrinth.minotaur") version "2.+"
 	id("maven-publish")
 }
 
-java.sourceCompatibility = JavaVersion.VERSION_17
-java.targetCompatibility = JavaVersion.VERSION_17
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 val minecraft_version: String by extra
 val loader_version: String by extra
 val fabric_version: String by extra
+val parchment_version: String by extra
 val archives_base_name: String by extra
 val mod_version: String by extra
 val maven_group: String by extra
@@ -39,7 +39,7 @@ dependencies {
 	minecraft("com.mojang:minecraft:${minecraft_version}")
 	mappings(loom.layered {
     	officialMojangMappings()
-    	parchment("org.parchmentmc.data:parchment-1.20.3:2023.12.31@zip")
+    	parchment("org.parchmentmc.data:parchment-${minecraft_version}:${parchment_version}@zip")
   	})
 	modImplementation("net.fabricmc:fabric-loader:${loader_version}")
 	modImplementation("net.fabricmc.fabric-api:fabric-api:${fabric_version}")
@@ -57,7 +57,7 @@ tasks.processResources {
 }
 
 tasks.withType<JavaCompile> {
-	options.release.set(17)
+	options.release.set(21)
 }
 
 java {
@@ -79,18 +79,17 @@ curseforge {
 	project(closureOf<CurseProject> {
 		id = curseforge_project_id
 		releaseType = "release"
-		addGameVersion("1.20")
-		addGameVersion("1.20.4")
-        addGameVersion("1.20-Snapshot")
-        addGameVersion("Java 17")
+		addGameVersion("1.20.5")
+		addGameVersion("1.20.6")
+        addGameVersion("Java 21")
         addGameVersion("Fabric")
 		mainArtifact(tasks.findByName("remapJar"), closureOf<CurseArtifact>{
-			displayName = "${archives_base_name}_${mod_version}"
+			displayName = "${archives_base_name} ${mod_version}"
 		})
 	})
     options(closureOf<Options> {
         forgeGradleIntegration = false
-        javaVersionAutoDetect = false
+        javaVersionAutoDetect = true
     })
 }
 
@@ -102,9 +101,9 @@ modrinth {
     token.set(System.getenv("modrinth_token"))
 	projectId.set(modrinth_project_id)
     versionNumber.set(mod_version)
-    versionName.set(archives_base_name)
+    versionName.set("${archives_base_name} ${mod_version}")
     uploadFile.set(tasks.remapJar.get())
-    gameVersions.addAll("1.20", "1.20.4")
+    gameVersions.addAll("1.20.5","1.20.6")
     loaders.add("fabric")
     dependencies {
         required.project("fabric-api")
