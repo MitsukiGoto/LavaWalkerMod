@@ -2,12 +2,10 @@
   "schemaVersion": 1,
   "id": "lava_walker",
   "version": "${version}",
-
+  "accessWidener": "lava_walker.accesswidener",
   "name": "LavaWalker",
   "description": "",
-  "authors": [
-    "Mikndesu"
-  ],
+  "authors": ["Mikndesu"],
   "icon": "assets/lava_walker/icon.png",
   "contact": {
     "homepage": "https://github.com/Mikndesu/",
@@ -17,16 +15,12 @@
   "license": "MIT License",
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "com.github.mikn.lavawalker.LavaWalker"
-    ],
+    "main": ["com.github.mikn.lavawalker.LavaWalker"],
     "modmenu": [
       "com.github.mikn.lavawalker.client.screen.LavaWalkerModMenuIntegration"
     ]
   },
-  "mixins": [
-    "lava_walker.mixins.json"
-  ],
+  "mixins": ["lava_walker.mixins.json"],
 
   "depends": {
     "fabricloader": ">=0.14.0",

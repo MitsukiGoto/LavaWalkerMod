@@ -25,10 +25,8 @@ import com.github.mikn.lavawalker.LavaWalker;
 import com.github.mikn.lavawalker.init.BlockInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -36,22 +34,20 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 
 public class LavaWalkerEnchantment extends Enchantment {
-    public LavaWalkerEnchantment(Enchantment.Rarity rarity, EquipmentSlot... equipmentSlots) {
-        super(rarity, EnchantmentCategory.ARMOR_FEET, equipmentSlots);
-    }
-
-    public int getMinCost(int p_45017_) {
-        return p_45017_ * 10;
-    }
-
-    public int getMaxCost(int p_45027_) {
-        return this.getMinCost(p_45027_) + 15;
+    public LavaWalkerEnchantment(Enchantment.EnchantmentDefinition pDefinition) {
+        super(pDefinition);
     }
 
     public boolean isTreasureOnly() {
         return LavaWalker.HOLDER.isTreasure;
     }
 
+    @Override
+    public int getWeight() {
+        return 2;
+    }
+
+    @Override
     public int getMaxLevel() {
         return LavaWalker.HOLDER.maxEnchantmentLevel;
     }

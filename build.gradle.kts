@@ -72,6 +72,7 @@ tasks.jar {
 
 loom {
 	mixin.defaultRefmapName.set("lava_walker.refmap.json")
+	accessWidenerPath.set(File("src/main/resources/lava_walker.accesswidener"))
 }
 
 curseforge {
