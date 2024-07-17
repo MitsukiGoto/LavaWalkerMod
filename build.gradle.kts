@@ -3,7 +3,7 @@ import com.matthewprenger.cursegradle.CurseProject
 import com.matthewprenger.cursegradle.Options
 
 plugins {
-	id("fabric-loom") version "1.6-SNAPSHOT"
+	id("fabric-loom") version "1.7-SNAPSHOT"
 	id("com.matthewprenger.cursegradle") version "1.4.0"
 	id("com.modrinth.minotaur") version "2.+"
 	id("maven-publish")
