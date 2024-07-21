@@ -47,6 +47,12 @@ public class ModdedObsidian extends Block {
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(1)));
     }
 
+    @Override
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+        level.scheduleTick(pos, this, Mth.nextInt(level.getRandom(), 60, 120));
+    }
+
+    @Override
     public void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
         int meltProbability = LavaWalker.HOLDER.meltSpeed.getInt();
         if (!((randomSource.nextInt(meltProbability) == 0 && this.slightlyMelt(blockState, serverLevel, blockPos)))) {
@@ -54,6 +60,7 @@ public class ModdedObsidian extends Block {
         }
     }
 
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(AGE);
     }
@@ -65,12 +72,12 @@ public class ModdedObsidian extends Block {
             level.setBlock(blockPos, blockState.setValue(AGE, Integer.valueOf(i + 1)), 2);
             return false;
         } else {
-            this.melt(blockState, level, blockPos);
+            this.melt(level, blockPos);
             return true;
         }
     }
 
-    private void melt(BlockState blockState, Level level, BlockPos blockPos) {
+    private void melt(Level level, BlockPos blockPos) {
         level.setBlockAndUpdate(blockPos, Blocks.LAVA.defaultBlockState());
     }
 
