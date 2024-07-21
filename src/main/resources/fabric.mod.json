@@ -15,9 +15,7 @@
   "license": "MIT License",
   "environment": "*",
   "entrypoints": {
-    "fabric-datagen": [
-      "com.github.mikn.lavawalker.ModDataGenerator"
-    ],
+    "fabric-datagen": ["com.github.mikn.lavawalker.ModDataGenerator"],
     "main": ["com.github.mikn.lavawalker.LavaWalker"],
     "modmenu": [
       "com.github.mikn.lavawalker.client.screen.LavaWalkerModMenuIntegration"
