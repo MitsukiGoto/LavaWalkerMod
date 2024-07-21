@@ -39,7 +39,7 @@ import com.github.mikn.lavawalker.LavaWalker;
 
 public class ModdedObsidian extends Block {
 
-    private static final IntegerProperty AGE = IntegerProperty.create("age", 0, 3);
+    public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 3);
 
     public ModdedObsidian() {
         super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)

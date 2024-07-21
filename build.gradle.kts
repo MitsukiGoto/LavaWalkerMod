@@ -49,6 +49,10 @@ dependencies {
 	}
 }
 
+fabricApi {
+	configureDataGeneration()
+}
+
 tasks.processResources {
 	inputs.property("version", mod_version)
 	filesMatching("fabric.mod.json") {
