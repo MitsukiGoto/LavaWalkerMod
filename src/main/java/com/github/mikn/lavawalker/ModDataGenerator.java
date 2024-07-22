@@ -10,8 +10,10 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.models.BlockModelGenerators;
@@ -43,11 +45,15 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyC
 
 public class ModDataGenerator implements DataGeneratorEntrypoint {
 
+  private static ResourceKey<Enchantment> LAVA_WALKER = ResourceKey.create(Registries.ENCHANTMENT,
+      ResourceLocation.fromNamespaceAndPath(LavaWalker.MODID, "lava_walker"));
+
   @Override
   public void onInitializeDataGenerator(FabricDataGenerator generator) {
     FabricDataGenerator.Pack pack = generator.createPack();
     pack.addProvider(BlockModelGenerator::new);
     pack.addProvider(EnchantmentGenerator::new);
+    pack.addProvider(LavaWalkerTagsProvider::new);
   }
 
   private static class BlockModelGenerator extends FabricModelProvider {
@@ -91,8 +97,6 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
       HolderGetter<Enchantment> enchantmentHolder = registries.lookupOrThrow(
           Registries.ENCHANTMENT);
       HolderGetter<Item> itemHolder = registries.lookupOrThrow(Registries.ITEM);
-      ResourceKey<Enchantment> LAVA_WALKER = ResourceKey.create(Registries.ENCHANTMENT,
-          ResourceLocation.fromNamespaceAndPath(LavaWalker.MODID, "lava_walker"));
       entries.add(LAVA_WALKER, Enchantment.enchantment(
               Enchantment.definition(itemHolder.getOrThrow(ItemTags.FOOT_ARMOR_ENCHANTABLE), 2, 2,
                   Enchantment.dynamicCost(10, 10), Enchantment.dynamicCost(25, 10), 4,
@@ -104,7 +108,8 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
                   BlockPredicate.allOf(BlockPredicate.matchesTag(new Vec3i(0, 1, 0), BlockTags.AIR),
                       BlockPredicate.matchesBlocks(Blocks.LAVA),
                       BlockPredicate.matchesFluids(Fluids.LAVA), BlockPredicate.unobstructed())),
-                  BlockStateProvider.simple(BlockInit.MODDED_OBSIDIAN), Optional.of(GameEvent.BLOCK_PLACE)),
+                  BlockStateProvider.simple(BlockInit.MODDED_OBSIDIAN),
+                  Optional.of(GameEvent.BLOCK_PLACE)),
               LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS,
                   net.minecraft.advancements.critereon.EntityPredicate.Builder.entity().flags(
                       net.minecraft.advancements.critereon.EntityFlagsPredicate.Builder.flags()
@@ -114,6 +119,26 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
     @Override
     public String getName() {
       return "dynamicData";
+    }
+  }
+
+  private static class LavaWalkerTagsProvider extends FabricTagProvider<Enchantment> {
+
+    public LavaWalkerTagsProvider(FabricDataOutput output,
+        CompletableFuture<HolderLookup.Provider> registriesFuture) {
+      super(output, Registries.ENCHANTMENT, registriesFuture);
+    }
+
+    @Override
+    protected void addTags(Provider wrapperLookup) {
+      getOrCreateTagBuilder(EnchantmentTags.TREASURE).addOptional(LAVA_WALKER.location())
+          .setReplace(false);
+      getOrCreateTagBuilder(EnchantmentTags.TRADEABLE).addOptional(LAVA_WALKER.location())
+          .setReplace(false);
+      getOrCreateTagBuilder(EnchantmentTags.TRADES_DESERT_COMMON).addOptional(
+          LAVA_WALKER.location()).setReplace(false);
+      getOrCreateTagBuilder(EnchantmentTags.TRADES_TAIGA_COMMON).addOptional(LAVA_WALKER.location())
+          .setReplace(false);
     }
   }
 }
