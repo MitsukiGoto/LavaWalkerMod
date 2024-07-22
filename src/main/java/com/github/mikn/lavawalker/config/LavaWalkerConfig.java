@@ -44,7 +44,6 @@ public class LavaWalkerConfig implements ConfigData {
         }
     }
 
-    @RequiresRestart
     @ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
     public MeltSpeedEnum meltSpeed = MeltSpeedEnum.NORMAL;
 }
