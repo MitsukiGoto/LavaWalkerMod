@@ -44,33 +44,7 @@ public class LavaWalkerConfig implements ConfigData {
         }
     }
 
-    public enum RarityEnum {
-        EPIC(1), RARE(2), UNCOMMON(5), COMMON(10);
-
-        private final int value;
-
-        RarityEnum(final int value) {
-            this.value = value;
-        }
-
-        public int getInt() {
-            return this.value;
-        }
-    }
-
-    @RequiresRestart
-    public boolean isTreasure = true;
-
-    public boolean shouldExclusiveWithFrost = true;
-
-    @RequiresRestart
-    public int maxEnchantmentLevel = 2;
-
     @RequiresRestart
     @ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
     public MeltSpeedEnum meltSpeed = MeltSpeedEnum.NORMAL;
-
-    @RequiresRestart
-    @ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
-    public RarityEnum rarity = RarityEnum.RARE;
 }

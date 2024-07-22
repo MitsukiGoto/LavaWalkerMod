@@ -2,11 +2,6 @@
   "enchantment.lava_walker.lava_walker": "Passo infuocato",
   "enchantment.lava_walker.lava_walker.desc": "Permette di camminare sulla lava.",
   "block.lava_walker.modded_obsidian": "Ossidiana",
-  "block.lava_walker.modded_crying_obsidian": "Ossidiana piangente",
-  "text.autoconfig.lava_walker.option.isTreasure": "Passo infuocato è un incantesimo del tesoro",
-  "text.autoconfig.lava_walker.option.maxEnchantmentLevel": "Livello massimo di questo incantesimo",
   "text.autoconfig.lava_walker.option.meltSpeed": "Velocità di fusione dell'ossidiana",
-  "text.autoconfig.lava_walker.option.rarity": "Frequenza di apparizione dell'incantesimo",
-  "text.autoconfig.lava_walker.option.shouldExclusiveWithFrost": "Passo infuocato è esclusivo con passo gelato",
   "text.autoconfig.lava_walker.title": "Menù di configurazione per LavaWalker Enchantment Mod"
 }

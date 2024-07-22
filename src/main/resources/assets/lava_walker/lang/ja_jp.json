@@ -2,10 +2,6 @@
   "enchantment.lava_walker.lava_walker": "溶岩渡り",
   "enchantment.lava_walker.lava_walker.desc": "溶岩の上に黒曜石を作り歩くことができます。",
   "block.lava_walker.modded_obsidian": "黒曜石",
-  "block.lava_walker.modded_crying_obsidian": "泣く黒曜石",
-  "text.autoconfig.lava_walker.option.isTreasure": "トレジャーエンチャントかどうか",
-  "text.autoconfig.lava_walker.option.maxEnchantmentLevel": "エンチャントの最大レベル",
   "text.autoconfig.lava_walker.option.meltSpeed": "黒曜石が溶岩に変わるまでの速さ",
-  "text.autoconfig.lava_walker.option.rarity": "エンチャントのレア度",
   "text.autoconfig.lava_walker.title": "Configuration Menu for LavaWalker Enchantment Mod"
 }

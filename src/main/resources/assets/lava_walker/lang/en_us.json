@@ -2,11 +2,6 @@
   "enchantment.lava_walker.lava_walker": "Lava Walker",
   "enchantment.lava_walker.lava_walker.desc": "You can walk over the lava.",
   "block.lava_walker.modded_obsidian": "Obsidian",
-  "block.lava_walker.modded_crying_obsidian": "Crying Obsidian",
-  "text.autoconfig.lava_walker.option.isTreasure": "Lavawalker is a treasure enchantment",
-  "text.autoconfig.lava_walker.option.maxEnchantmentLevel": "Maximum level of this enchantment",
   "text.autoconfig.lava_walker.option.meltSpeed": "Obsidian melting velocity",
-  "text.autoconfig.lava_walker.option.rarity": "Frequency of appearance of Lavawalker",
-  "text.autoconfig.lava_walker.option.shouldExclusiveWithFrost": "Lavawalker is exclusive with Frostwalker",
   "text.autoconfig.lava_walker.title": "Configuration Menu for Lavawalker Enchantment Mod"
 }
