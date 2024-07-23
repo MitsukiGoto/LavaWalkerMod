@@ -29,10 +29,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.enchantment.LevelBasedValue;
 import net.minecraft.world.item.enchantment.effects.ReplaceDisk;
 import net.minecraft.world.level.block.Blocks;
@@ -45,8 +47,9 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyC
 
 public class ModDataGenerator implements DataGeneratorEntrypoint {
 
-  private static ResourceKey<Enchantment> LAVA_WALKER = ResourceKey.create(Registries.ENCHANTMENT,
+  private static final ResourceKey<Enchantment> LAVA_WALKER = ResourceKey.create(Registries.ENCHANTMENT,
       ResourceLocation.fromNamespaceAndPath(LavaWalker.MODID, "lava_walker"));
+  private static final TagKey<Enchantment> LAVA_WALKER_EXCLUSIVE = TagKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(LavaWalker.MODID, "exclusive_set/lava_walker"));
 
   @Override
   public void onInitializeDataGenerator(FabricDataGenerator generator) {
@@ -101,7 +104,7 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
               Enchantment.definition(itemHolder.getOrThrow(ItemTags.FOOT_ARMOR_ENCHANTABLE), 2, 2,
                   Enchantment.dynamicCost(10, 10), Enchantment.dynamicCost(25, 10), 4,
                   EquipmentSlotGroup.FEET))
-          .exclusiveWith(enchantmentHolder.getOrThrow(EnchantmentTags.BOOTS_EXCLUSIVE))
+          .exclusiveWith(enchantmentHolder.getOrThrow(LAVA_WALKER_EXCLUSIVE))
           .withEffect(EnchantmentEffectComponents.LOCATION_CHANGED, new ReplaceDisk(
                   new LevelBasedValue.Clamped(LevelBasedValue.perLevel(3.0F, 1.0F), 0.0F, 16.0F),
                   LevelBasedValue.constant(1.0F), new Vec3i(0, -1, 0), Optional.of(
@@ -139,6 +142,7 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
           LAVA_WALKER.location()).setReplace(false);
       getOrCreateTagBuilder(EnchantmentTags.TRADES_TAIGA_COMMON).addOptional(LAVA_WALKER.location())
           .setReplace(false);
+      getOrCreateTagBuilder(LAVA_WALKER_EXCLUSIVE).add(Enchantments.FROST_WALKER).addOptional(LAVA_WALKER);
     }
   }
 }
