@@ -84,8 +84,7 @@ curseforge {
 	project(closureOf<CurseProject> {
 		id = curseforge_project_id
 		releaseType = "release"
-		addGameVersion("1.20.5")
-		addGameVersion("1.20.6")
+		addGameVersion("1.21")
         addGameVersion("Java 21")
         addGameVersion("Fabric")
 		mainArtifact(tasks.findByName("remapJar"), closureOf<CurseArtifact>{
@@ -108,7 +107,7 @@ modrinth {
     versionNumber.set(mod_version)
     versionName.set("${archives_base_name} ${mod_version}")
     uploadFile.set(tasks.remapJar.get())
-    gameVersions.addAll("1.20.5","1.20.6")
+    gameVersions.addAll("1.21")
     loaders.add("fabric")
     dependencies {
         required.project("fabric-api")

@@ -25,7 +25,6 @@ import com.github.mikn.lavawalker.LavaWalker;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
-import me.shedaniel.autoconfig.annotation.ConfigEntry.Gui.RequiresRestart;
 
 @Config(name = LavaWalker.MODID)
 public class LavaWalkerConfig implements ConfigData {

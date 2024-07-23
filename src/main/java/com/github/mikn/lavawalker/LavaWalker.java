@@ -42,9 +42,13 @@ public class LavaWalker implements ModInitializer {
     @Override
     public void onInitialize() {
         Registry.register(BuiltInRegistries.BLOCK,
-                ResourceLocation.fromNamespaceAndPath(LavaWalker.MODID, "modded_obsidian"), BlockInit.MODDED_OBSIDIAN);
+                withLavaWalkerDefaultNameSpace("modded_obsidian"), BlockInit.MODDED_OBSIDIAN);
         Registry.register(BuiltInRegistries.ITEM,
-                ResourceLocation.fromNamespaceAndPath(LavaWalker.MODID, "modded_obsidian"), ItemInit.MODDED_OBSIDIAN);
+                withLavaWalkerDefaultNameSpace("modded_obsidian"), ItemInit.MODDED_OBSIDIAN);
+    }
+
+    public static ResourceLocation withLavaWalkerDefaultNameSpace(String nameSpace) {
+        return ResourceLocation.fromNamespaceAndPath(LavaWalker.MODID, nameSpace);
     }
 
     static {

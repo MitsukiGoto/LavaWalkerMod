@@ -25,7 +25,6 @@ import net.minecraft.data.models.blockstates.VariantProperties;
 import net.minecraft.data.models.model.DelegatedModel;
 import net.minecraft.data.models.model.ModelLocationUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
@@ -47,9 +46,12 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyC
 
 public class ModDataGenerator implements DataGeneratorEntrypoint {
 
-  private static final ResourceKey<Enchantment> LAVA_WALKER = ResourceKey.create(Registries.ENCHANTMENT,
-      ResourceLocation.fromNamespaceAndPath(LavaWalker.MODID, "lava_walker"));
-  private static final TagKey<Enchantment> LAVA_WALKER_EXCLUSIVE = TagKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(LavaWalker.MODID, "exclusive_set/lava_walker"));
+  private static final ResourceKey<Enchantment> LAVA_WALKER = ResourceKey.create(
+      Registries.ENCHANTMENT,
+      LavaWalker.withLavaWalkerDefaultNameSpace("lava_walker"));
+  private static final TagKey<Enchantment> LAVA_WALKER_EXCLUSIVE = TagKey.create(
+      Registries.ENCHANTMENT,
+      LavaWalker.withLavaWalkerDefaultNameSpace("exclusive_set/lava_walker"));
 
   @Override
   public void onInitializeDataGenerator(FabricDataGenerator generator) {
@@ -142,7 +144,8 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
           LAVA_WALKER.location()).setReplace(false);
       getOrCreateTagBuilder(EnchantmentTags.TRADES_TAIGA_COMMON).addOptional(LAVA_WALKER.location())
           .setReplace(false);
-      getOrCreateTagBuilder(LAVA_WALKER_EXCLUSIVE).add(Enchantments.FROST_WALKER).addOptional(LAVA_WALKER);
+      getOrCreateTagBuilder(LAVA_WALKER_EXCLUSIVE).add(Enchantments.FROST_WALKER)
+          .addOptional(LAVA_WALKER);
     }
   }
 }
