@@ -1,5 +1,7 @@
 {
   "enchantment.lava_walker.lava_walker": "熔岩行者",
+  "enchantment.lava_walker.lava_walker.desc": "你可以在熔岩上行走",
   "block.lava_walker.modded_obsidian": "黑曜石",
-  "block.lava_walker.modded_crying_obsidian": "哭泣的黑曜石"
+  "text.autoconfig.lava_walker.option.meltSpeed": "黑曜石变成熔岩的速度有多快",
+  "text.autoconfig.lava_walker.title": "LavaWalker设置屏幕"
 }

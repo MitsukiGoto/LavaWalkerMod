@@ -3,5 +3,5 @@
   "enchantment.lava_walker.lava_walker.desc": "溶岩の上に黒曜石を作り歩くことができます。",
   "block.lava_walker.modded_obsidian": "黒曜石",
   "text.autoconfig.lava_walker.option.meltSpeed": "黒曜石が溶岩に変わるまでの速さ",
-  "text.autoconfig.lava_walker.title": "Configuration Menu for LavaWalker Enchantment Mod"
+  "text.autoconfig.lava_walker.title": "LavaWalkerの設定画面"
 }

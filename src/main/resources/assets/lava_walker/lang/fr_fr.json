@@ -1,0 +1,7 @@
+{
+  "enchantment.lava_walker.lava_walker": "Semelles brûlante",
+  "enchantment.lava_walker.lava_walker.desc": "Tu peux marcher sur la lave.",
+  "block.lava_walker.modded_obsidian": "Obsidienne",
+  "text.autoconfig.lava_walker.option.meltSpeed": "Vélocité de fusion de l'obsidienne",
+  "text.autoconfig.lava_walker.title": "Menu de configuration pour la semelles brûlante"
+}
