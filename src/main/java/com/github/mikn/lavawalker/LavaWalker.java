@@ -30,7 +30,6 @@ import org.apache.logging.log4j.Logger;
 
 import com.github.mikn.lavawalker.config.LavaWalkerConfig;
 import com.github.mikn.lavawalker.init.BlockInit;
-import com.github.mikn.lavawalker.init.EnchantmentInit;
 import com.github.mikn.lavawalker.init.ItemInit;
 
 import net.neoforged.bus.api.IEventBus;
@@ -54,7 +53,6 @@ public class LavaWalker {
         });
         BlockInit.BLOCKS.register(modEventBus);
         ItemInit.ITEMS.register(modEventBus);
-        EnchantmentInit.ENCHANTMENTS.register(modEventBus);
     }
 
 }

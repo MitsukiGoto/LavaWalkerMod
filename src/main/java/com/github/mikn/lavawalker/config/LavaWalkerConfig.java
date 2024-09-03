@@ -39,37 +39,14 @@ public class LavaWalkerConfig {
         }
     }
 
-    public enum RarityEnum {
-        EPIC(1), RARE(2), UNCOMMON(5), COMMON(10);
-
-        private final int value;
-
-        RarityEnum(final int value) {
-            this.value = value;
-        }
-
-        public int getInt() {
-            return this.value;
-        }
-    }
-
     public static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
     public static final ModConfigSpec SPEC;
 
-    public static final ModConfigSpec.ConfigValue<Integer> max_enchantment_level;
-    public static final ModConfigSpec.ConfigValue<Boolean> exclusiveWithFrostWalker;
-    public static final ModConfigSpec.ConfigValue<Boolean> isTreasure;
     public static final ModConfigSpec.EnumValue<MeltSpeedEnum> meltSpeed;
-    public static final ModConfigSpec.EnumValue<RarityEnum> rarity;
 
     static {
         BUILDER.push("Config for LavaWalker Enchantment Mod");
-        exclusiveWithFrostWalker = BUILDER.comment("Lavawalker is exclusive with Frostwalker")
-                .define("exclusiveWithFrostWalker", true);
-        isTreasure = BUILDER.comment("Lavawalker is a treasure enchantment").define("isTreasure", true);
-        max_enchantment_level = BUILDER.comment("Maximum level of Lavawalker").define("max_enchantment_level", 2);
         meltSpeed = BUILDER.comment("Obsidian melting velocity").defineEnum("meltSpeed", MeltSpeedEnum.NORMAL);
-        rarity = BUILDER.comment("Frequency of appearance of Lavawalker").defineEnum("rarity", RarityEnum.RARE);
         BUILDER.pop();
         SPEC = BUILDER.build();
     }

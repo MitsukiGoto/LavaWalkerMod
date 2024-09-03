@@ -21,6 +21,7 @@ build
 eclipse
 run
 runs
+intellij-java-google-style.xml
 
 # Files from Forge MDK
 forge*changelog.txt
