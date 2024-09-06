@@ -1,6 +1,5 @@
 {
   "enchantment.lava_walker.lava_walker": "Lava Walker",
-  "enchantment.lava_walker.lava_walker.desc": "Lavawalker turns lava into obsidians under you as you walk over the lava.",
+  "enchantment.lava_walker.lava_walker.desc": "You can walk over the lava.",
   "block.lava_walker.modded_obsidian": "Obsidian",
-  "block.lava_walker.modded_crying_obsidian": "Crying Obsidian"
 }

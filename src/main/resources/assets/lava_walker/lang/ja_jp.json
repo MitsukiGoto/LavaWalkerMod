@@ -1,6 +1,5 @@
 {
   "enchantment.lava_walker.lava_walker": "溶岩渡り",
   "enchantment.lava_walker.lava_walker.desc": "溶岩の上に黒曜石を作り歩くことができます。",
-  "block.lava_walker.modded_obsidian": "黒曜石",
-  "block.lava_walker.modded_crying_obsidian": "泣く黒曜石"
+  "block.lava_walker.modded_obsidian": "黒曜石"
 }

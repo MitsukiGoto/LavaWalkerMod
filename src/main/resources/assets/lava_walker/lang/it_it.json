@@ -1,6 +1,5 @@
 {
     "enchantment.lava_walker.lava_walker": "Passo infuocato",
     "enchantment.lava_walker.lava_walker.desc": "Permette di camminare sulla lava.",
-    "block.lava_walker.modded_obsidian": "Ossidiana",
-    "block.lava_walker.modded_crying_obsidian": "Ossidiana piangente"
+    "block.lava_walker.modded_obsidian": "Ossidiana"
 }
