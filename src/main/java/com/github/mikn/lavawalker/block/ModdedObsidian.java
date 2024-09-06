@@ -21,6 +21,7 @@
 
 package com.github.mikn.lavawalker.block;
 
+import com.github.mikn.lavawalker.config.LavaWalkerConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
@@ -35,43 +36,50 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 
-import com.github.mikn.lavawalker.config.LavaWalkerConfig;
-
 public class ModdedObsidian extends Block {
 
-    public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 3);
+  public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 3);
 
-    public ModdedObsidian() {
-        super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM)
-                .requiresCorrectToolForDrops().strength(50.0f, 1200.0f));
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(1)));
-    }
+  public ModdedObsidian() {
+    super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)
+        .instrument(NoteBlockInstrument.BASEDRUM)
+        .requiresCorrectToolForDrops().strength(50.0f, 1200.0f));
+    this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(1)));
+  }
 
-    public void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
-        int meltProbability = LavaWalkerConfig.meltSpeed.get().getInt();
-        if (!((randomSource.nextInt(meltProbability) == 0 && this.slightlyMelt(blockState, serverLevel, blockPos)))) {
-            serverLevel.scheduleTick(blockPos, this, Mth.nextInt(randomSource, 20, 40));
-        }
-    }
+  @Override
+  public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState,
+      boolean movedByPiston) {
+    level.scheduleTick(pos, this, Mth.nextInt(level.getRandom(), 60, 120));
+  }
 
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AGE);
+  public void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos,
+      RandomSource randomSource) {
+    int meltProbability = LavaWalkerConfig.meltSpeed.get().getInt();
+    if (!((randomSource.nextInt(meltProbability) == 0 && this.slightlyMelt(blockState, serverLevel,
+        blockPos)))) {
+      serverLevel.scheduleTick(blockPos, this, Mth.nextInt(randomSource, 20, 40));
     }
+  }
 
-    private boolean slightlyMelt(BlockState blockState, Level level, BlockPos blockPos) {
-        final int MAX_AGE_BEFORE_LAVA = 2;
-        int i = blockState.getValue(AGE);
-        if (i < MAX_AGE_BEFORE_LAVA) {
-            level.setBlock(blockPos, blockState.setValue(AGE, Integer.valueOf(i + 1)), 2);
-            return false;
-        } else {
-            this.melt(blockState, level, blockPos);
-            return true;
-        }
-    }
+  protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+    builder.add(AGE);
+  }
 
-    private void melt(BlockState blockState, Level level, BlockPos blockPos) {
-        level.setBlockAndUpdate(blockPos, Blocks.LAVA.defaultBlockState());
+  private boolean slightlyMelt(BlockState blockState, Level level, BlockPos blockPos) {
+    final int MAX_AGE_BEFORE_LAVA = 2;
+    int i = blockState.getValue(AGE);
+    if (i < MAX_AGE_BEFORE_LAVA) {
+      level.setBlock(blockPos, blockState.setValue(AGE, Integer.valueOf(i + 1)), 2);
+      return false;
+    } else {
+      this.melt(level, blockPos);
+      return true;
     }
+  }
+
+  private void melt(Level level, BlockPos blockPos) {
+    level.setBlockAndUpdate(blockPos, Blocks.LAVA.defaultBlockState());
+  }
 
 }
