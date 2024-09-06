@@ -25,5 +25,7 @@ public class DataGenHandler {
         new LavaWalkerItemModelProvider(output, existingFileHelper));
     generator.addProvider(event.includeServer(),
         new LavaWalkerEnchantmentProvider(output, lookUpProvider));
+    generator.addProvider(event.includeServer(),
+        new LavaWalkerTagProvider(output, lookUpProvider, existingFileHelper));
   }
 }

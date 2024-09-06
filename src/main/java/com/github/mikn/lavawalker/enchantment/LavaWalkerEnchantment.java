@@ -1,5 +1,7 @@
 package com.github.mikn.lavawalker.enchantment;
 
+import static com.github.mikn.lavawalker.datagen.LavaWalkerTagProvider.LAVA_WALKER_EXCLUSIVE;
+
 import com.github.mikn.lavawalker.LavaWalker;
 import com.github.mikn.lavawalker.init.BlockInit;
 import java.util.Optional;
@@ -37,6 +39,7 @@ public class LavaWalkerEnchantment {
             Enchantment.definition(itemHolder.getOrThrow(ItemTags.FOOT_ARMOR_ENCHANTABLE), 2, 2,
                 Enchantment.dynamicCost(10, 10), Enchantment.dynamicCost(25, 10), 4,
                 EquipmentSlotGroup.FEET))
+        .exclusiveWith(enchantmentHolder.getOrThrow(LAVA_WALKER_EXCLUSIVE))
         .withEffect(EnchantmentEffectComponents.LOCATION_CHANGED, new ReplaceDisk(
                 new LevelBasedValue.Clamped(LevelBasedValue.perLevel(3.0F, 1.0F), 0.0F, 16.0F),
                 LevelBasedValue.constant(1.0F), new Vec3i(0, -1, 0), Optional.of(
