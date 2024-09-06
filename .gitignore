@@ -27,3 +27,4 @@ intellij-java-google-style.xml
 forge*changelog.txt
 .DS_Store
 .vscode
+src/generated
