@@ -1,5 +1,6 @@
-package com.github.mikn.lavawalker;
+package com.github.mikn.lavawalker.datagen;
 
+import com.github.mikn.lavawalker.LavaWalker;
 import com.github.mikn.lavawalker.enchantment.LavaWalkerEnchantment;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;

@@ -1,5 +1,6 @@
-package com.github.mikn.lavawalker;
+package com.github.mikn.lavawalker.datagen;
 
+import com.github.mikn.lavawalker.LavaWalker;
 import com.github.mikn.lavawalker.block.ModdedObsidian;
 import com.github.mikn.lavawalker.init.BlockInit;
 import net.minecraft.data.PackOutput;

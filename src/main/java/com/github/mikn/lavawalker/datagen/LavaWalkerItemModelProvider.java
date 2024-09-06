@@ -1,5 +1,6 @@
-package com.github.mikn.lavawalker;
+package com.github.mikn.lavawalker.datagen;
 
+import com.github.mikn.lavawalker.LavaWalker;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.models.model.ModelLocationUtils;
 import net.minecraft.world.level.block.Blocks;

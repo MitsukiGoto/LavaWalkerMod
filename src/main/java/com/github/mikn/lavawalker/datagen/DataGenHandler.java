@@ -1,5 +1,6 @@
-package com.github.mikn.lavawalker;
+package com.github.mikn.lavawalker.datagen;
 
+import com.github.mikn.lavawalker.LavaWalker;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.DataGenerator;
