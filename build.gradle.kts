@@ -17,6 +17,7 @@ val mod_version: String by extra
 val mod_id: String by extra
 val curseforge_project_id: String by extra
 val modrinth_project_id: String by extra
+val parchment_version: String by extra
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
@@ -25,8 +26,8 @@ neoForge {
     validateAccessTransformers = true
 
     parchment {
+        mappingsVersion = parchment_version
         minecraftVersion = "1.21"
-        mappingsVersion = "2024.07.28"
     }
 
     runs {
