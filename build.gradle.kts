@@ -26,7 +26,7 @@ neoForge {
 
     parchment {
         minecraftVersion = "1.21"
-        mappingsVersion = "2024.07.07"
+        mappingsVersion = "2024.07.28"
     }
 
     runs {
